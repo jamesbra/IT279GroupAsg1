@@ -2,16 +2,15 @@
 #include "calcNode.cpp"
 
 
-class operationfucntions
+class operationFunctions
 {
   public:
-    
-    static void addition(const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
-    static void subtraction(const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
-    static void multiplication(const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
-    static void division(const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
-    static void modulo(const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
-    static void undo(const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
-    static void redo(const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
-    static void clear(const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
+    static void addition(int& output, const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
+    static void subtraction(int& output, const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
+    static void multiplication(int& output, const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
+    static void division(int& output, const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
+    static void modulo(int& output, const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
+    static void undo(int& output, const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
+    static void redo(int& output, const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
+    static void clear(int& output, const calcNode& temp,stack<calcNode>& undoStack,stack<calcNode>& redoStack);
 };

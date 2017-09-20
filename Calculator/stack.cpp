@@ -1,3 +1,6 @@
+#ifndef STACK_H
+#define STACK_H
+
 #include "LinkedList.cpp"
 
 template <class T>
@@ -93,3 +96,6 @@ int stack<T>::getSize()
 {
   return stackList.size();
 }
+
+
+#endif

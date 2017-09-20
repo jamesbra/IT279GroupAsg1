@@ -1,3 +1,6 @@
+#ifndef CALCNODE_H
+#define CALCNODE_H
+
 struct calcNode
 {
   char operation;
@@ -5,3 +8,5 @@ struct calcNode
   int operandTwo;
   bool help;
 };
+
+#endif

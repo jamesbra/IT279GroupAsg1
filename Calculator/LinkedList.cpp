@@ -1,3 +1,6 @@
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
 #include <iostream>
 
 template<class T>
@@ -82,6 +85,8 @@ void list<T>::insert(T newData,int location)
   //if there is nothing in the list and does not specifiy location
   if(location==-1 && size==0)
   {
+    head=new node;
+    tail=head;
     head->data=newData;
     size++;
   }
@@ -288,3 +293,5 @@ list<T>& list<T>::operator=(const list& rtSide)
       return *this;
   }
 }
+
+#endif
