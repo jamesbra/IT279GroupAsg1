@@ -89,7 +89,7 @@ void stack<T>::clear()
 }
 
 template<class T>
-int stack::getsize()
+int stack<T>::getSize()
 {
   return stackList.size();
 }
