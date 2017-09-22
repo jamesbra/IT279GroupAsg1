@@ -31,7 +31,7 @@ class ourStack
     //clear whole stack
     void clear();
     
-    //gets the size of the stack
+    //gets the getSize() of the stack
     int getSize();
   private:
     list<T> stackList;
@@ -71,30 +71,30 @@ void ourStack<T>::push(T data)
 template<class T>
 T ourStack<T>::pop()
 {
-  T temp = stackList[stackList.size -1];
-  stackList.remove(stackList.size-1);
+  T temp = stackList[stackList.getSize() -1];
+  stackList.remove(stackList.getSize()-1);
   return temp;
 }
 
 template<class T>
 T ourStack<T>::peek()
 {
-  return stackList[stackList.size-1];
+  return stackList[stackList.getSize()-1];
 }
 
 template<class T>
 void ourStack<T>::clear()
 {
-  while(stackList.size!=0)
+  while(stackList.getSize()!=0)
   {
-    stackList.remove(stackList.size-1);
+    stackList.remove(stackList.getSize()-1);
   }
 }
 
 template<class T>
 int ourStack<T>::getSize()
 {
-  return stackList.size();
+  return stackList.getSize();
 }
 
 

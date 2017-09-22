@@ -5,10 +5,10 @@
 
 struct calcNode CalculatorInput::receiveInput(){
     struct calcNode temp;
-    std::regex overallStructure("[[:blank:]]*[-+\\/*][[:blank:]]*[\\d]+[[:blank:]]*");
+    std::regex overallStructure("[[:blank:]]*[-+%\\/*][[:blank:]]*[\\d]+[[:blank:]]*");
     std::regex userCommandStructure("[[:blank:]]*[URCQurcq][[:blank:]]*");
     std::regex commandSet("[URCQurcq]");
-    std::regex operatorSet("[-+\\/*]");
+    std::regex operatorSet("[-+%\\/*]");
     std::regex operands("[\\d]+");
     std::regex userCommandHelp("[?][URCQurcq|+\\/*\\-]");
     std::smatch m;

@@ -6,6 +6,7 @@ struct calcNode
   char operation;
   int operandOne;
   int operandTwo;
+  int result;
   bool help;
 };
 

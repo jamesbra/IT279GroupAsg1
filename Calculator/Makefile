@@ -3,7 +3,7 @@ Calculator: Calculator.o CalculatorInput.o LinkedList.o ourStack.o calcNode.o op
 Calculator.o: Calculator.cpp
 	g++ -c Calculator.cpp
 CalculatorInput.o: CalculatorInput.cpp
-	g++ -c CalculatorInput.cpp
+	g++ -std=c++11 -c CalculatorInput.cpp
 LinkedList.o: LinkedList.cpp
 	g++ -c LinkedList.cpp
 ourStack.o: ourStack.cpp

@@ -29,7 +29,7 @@ cout<<"There is a help feature, if you don't know how to use an operation type i
     calcNode temp;
     temp.operation = '+';
     temp.operandOne = 0;
-    temp.operandTwo = 10;
+    temp.operandTwo = 0;
     temp.help = false;
     cout<<"\n"<<currentValue<<endl;
     temp = CalculatorInput::receiveInput();
@@ -48,36 +48,43 @@ cout<<"There is a help feature, if you don't know how to use an operation type i
        case '+':
 	      //call function to deal with +
 	      operationFunctions::addition(currentValue,temp,redoStack,undoStack);
-	      temp.operation = 'Q';
 	      break;
 	 
        case '-':
 	      //call function to deal with -
+	 operationFunctions::subtraction(currentValue,temp,redoStack,undoStack);
 	      break;
 	 
        case '*':
 	      //call function to deal with *
+	 operationFunctions::multiplication(currentValue,temp,redoStack,undoStack);
 	      break;
 	 
        case '/':
 	      //call function to deal with /
+	 operationFunctions::division(currentValue,temp,redoStack,undoStack);
 	      break;
 	 
        case '%':
 	      //call function to deal with %
+	 operationFunctions::modulo(currentValue,temp,redoStack,undoStack);
 	      break;
 	 
-	    case 'U':
+       case 'U':
 	      //call function to deal with U
+	 operationFunctions::undo(currentValue,temp,redoStack,undoStack);
 	      break;
 	 
-	    case 'R':
+       case 'R':
 	      //call function to deal with R
+	 operationFunctions::redo(currentValue,temp,redoStack,undoStack);
 	      break;
 	 
-	    case 'C':
+       case 'C':
 	      //call function to deal with C
 	    break;
+       default:
+	  cout<<"Not a valid input"<<endl;
      }
      cout<<currentValue<<endl;
      //after dealling with current temp calcNode, get a new one
