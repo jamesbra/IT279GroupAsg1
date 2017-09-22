@@ -1,5 +1,6 @@
 #include <iostream>
-#include "stack.cpp"
+#include "CalculatorInput.h"
+#include "ourStack.cpp"
 #include "calcNode.cpp"
 #include "operationFunctions.h"
 
@@ -23,15 +24,15 @@ cout<<"\nThe calculator starts off as zero. From there you perform operations on
 cout<<"There is a help feature, if you don't know how to use an operation type in a question mark\n"
     <<"then the operation to get an explanation of the operation (e.g. ?*,?%,?-,?R)\n";
     int currentValue =0;
-    stack<calcNode> redoStack;
-    stack<calcNode> undoStack;
+    ourStack<calcNode> redoStack;
+    ourStack<calcNode> undoStack;
     calcNode temp;
     temp.operation = '+';
     temp.operandOne = 0;
     temp.operandTwo = 10;
     temp.help = false;
     cout<<"\n"<<currentValue<<endl;
-    //temp = getInput();
+    temp = CalculatorInput::receiveInput();
     //above gets the first input from the user then the while loop handels the rest
     while(temp.operation!='Q')
     {
@@ -45,42 +46,42 @@ cout<<"There is a help feature, if you don't know how to use an operation type i
      switch(temp.operation)
      {
        case '+':
-	 //call function to deal with +
-	 operationFunctions::addition(currentValue,temp,redoStack,undoStack);
-	 temp.operation = 'Q';
-	 break;
+	      //call function to deal with +
+	      operationFunctions::addition(currentValue,temp,redoStack,undoStack);
+	      temp.operation = 'Q';
+	      break;
 	 
        case '-':
-	 //call function to deal with -
-	 break;
+	      //call function to deal with -
+	      break;
 	 
        case '*':
-	 //call function to deal with *
-	 break;
+	      //call function to deal with *
+	      break;
 	 
        case '/':
-	 //call function to deal with /
-	 break;
+	      //call function to deal with /
+	      break;
 	 
        case '%':
-	 //call function to deal with %
-	 break;
+	      //call function to deal with %
+	      break;
 	 
-	case 'U':
-	  //call function to deal with U
-	 break;
+	    case 'U':
+	      //call function to deal with U
+	      break;
 	 
-	case 'R':
-	  //call function to deal with R
-	 break;
+	    case 'R':
+	      //call function to deal with R
+	      break;
 	 
-	case 'C':
-	  //call function to deal with C
-	 break;
+	    case 'C':
+	      //call function to deal with C
+	    break;
      }
      cout<<currentValue<<endl;
      //after dealling with current temp calcNode, get a new one
-     //temp = getInput();
+     temp = CalculatorInput::receiveInput();
     }
   return 0;
 };

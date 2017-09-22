@@ -1,23 +1,23 @@
-#ifndef STACK_H
-#define STACK_H
+#ifndef OURSTACK_H
+#define OURSTACK_H
 
 #include "LinkedList.cpp"
 
 template <class T>
-class stack
+class ourStack
 {
   public:
     //default cosntuctor to construct stack
-    stack();
+    ourStack();
     
     //constuctor with an initial data
-    stack(T data);
+    ourStack(T data);
     
     //copy constructor
-    stack(const stack& stackObject);
+    ourStack(const ourStack& stackObject);
     
     //deconstuctor
-    ~stack();
+    ~ourStack();
     
     //adds to the to of stack
     void push(T data);
@@ -38,38 +38,38 @@ class stack
 };
 
 template<class T>
-stack<T>::stack()
+ourStack<T>::ourStack()
 {
   //don't need to do anything
 }
 
 template<class T>
-stack<T>::stack(T data)
+ourStack<T>::ourStack(T data)
 {
   stackList.insert(data);
 }
 
 
 template<class T>
-stack<T>::stack(const stack& stackObject)
+ourStack<T>::ourStack(const ourStack& stackObject)
 { 
   stackList = stackObject.stackList;
 }
 
 template<class T>
-stack<T>::~stack()
+ourStack<T>::~ourStack()
 {
   //nothing needs to be done, no dynamic variables in here
 }
 
 template<class T>
-void stack<T>::push(T data)
+void ourStack<T>::push(T data)
 {
   stackList.insert(data);
 }
 
 template<class T>
-T stack<T>::pop()
+T ourStack<T>::pop()
 {
   T temp = stackList[stackList.size -1];
   stackList.remove(stackList.size-1);
@@ -77,13 +77,13 @@ T stack<T>::pop()
 }
 
 template<class T>
-T stack<T>::peek()
+T ourStack<T>::peek()
 {
   return stackList[stackList.size-1];
 }
 
 template<class T>
-void stack<T>::clear()
+void ourStack<T>::clear()
 {
   while(stackList.size!=0)
   {
@@ -92,7 +92,7 @@ void stack<T>::clear()
 }
 
 template<class T>
-int stack<T>::getSize()
+int ourStack<T>::getSize()
 {
   return stackList.size();
 }
