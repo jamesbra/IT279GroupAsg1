@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <ctime>
 using namespace std;
 
 int main(){
@@ -7,14 +8,15 @@ int main(){
 	int x = 0;
 	//for when customer arrivers
 	int customer = 1;
-	//for when custoemr leaves
+	//for when customer leaves
 	int customerL =1;
 	int size = 0;
 	int maxSize = 0;
 	int maxWait = 0;
 	int wait = 0; 
+	srand(time(NULL));
 	
-	//prearrival-customer waiting to arrive
+	//prearrival- customer waiting to arrive
 	int pa = 0;
 	//being currently serviced- value is the time the customer will be done and can leave
 	int bcs = 0;
@@ -28,7 +30,7 @@ int main(){
 	cout<<"Please enter a value for X ";
 	cin>>x;
 	//setting up first customer to arrive
-	pa = RandomNum;
+	pa = rand()%x+1;
 	//this for loop simulates a 12 hour shift where each i increment is 1 minute
 	for(int i=1;i<720;i++){
 		//if customer arrives
@@ -37,18 +39,16 @@ int main(){
 			customer++;
 			//check if line que and being currently served is empty
 			if(size=0 && bcs=0){
-				//sill needs random number of range 1 to x ***********
-				bcs = RandomNum + i;
-				pa = RandomNum + i;
+				bcs = (rand()%x+1) + i;
+				pa = (rand()%x+1) + i;
 			}
 			else{
 				//someone else is already being serviced,wait in line,Then schdule next customer
-				//sill needs random number of range 1 to x ***********
-				line.add(Randomnum);
+				line.add(rand()%x+1);
 				//add the current time so when customer finishes line you can compare time and get wait time
 				time.add(i);
 				size++;
-				pa= RandomNum+i;	
+				pa= (rand()%x+1) + i;	
 			}
 		
 		
@@ -71,7 +71,7 @@ int main(){
 		}
 		//checks the wait time against the max
 		if(wait>maxWait){
-			maxWait wait;
+			maxWait = wait;
 		}
 		//reseting these values
 		wait=0;
@@ -79,4 +79,5 @@ int main(){
 	}
 	cout<<"The longest the line was at any minute during the simulation was "<<maxSize<<" Customers."<<endl;
 	cout<<"The longest an indivudal customer waited in line was "<<maxWait<<" minutes"<<endl; 
+	return 0;
 }
