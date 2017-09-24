@@ -45,10 +45,10 @@ int main(){
 			else{
 				//someone else is already being serviced,wait in line,Then schdule next customer
 				line.add(rand()%x+1);
-				//add the current time so when customer finishes line you can compare time and get wait time
+				//add the current time so when customer finishes waiting in line you can compare the times and get wait time
 				time.add(i);
 				size++;
-				pa= (rand()%x+1) + i;	
+				pa = (rand()%x+1) + i;	
 			}
 		
 		
