@@ -24,8 +24,11 @@ int main(){
 	//que for the time a customer arrives, once the customer starts being serviced current time and this will be used to determine wait time
 	//que time
 	
-	cout<<Please enter a value for X ";
+	//user input for the range of random numbers
+	cout<<"Please enter a value for X ";
 	cin>>x;
+	//setting up first customer to arrive
+	pa = RandomNum;
 	//this for loop simulates a 12 hour shift where each i increment is 1 minute
 	for(int i=1;i<720;i++){
 		//if customer arrives
@@ -54,7 +57,7 @@ int main(){
 		if(bcs=i){
 			cout<<"Customer "<<customerL<<" left at "<<i<<endl;
 			customerL++;
-			//this if statment checks to make sure that there is a customer wwaiting in line
+			//this if statment checks to make sure that there is a customer waiting in line
 			if(size>0){
 				bcs = line.remove+i;
 				size--;
