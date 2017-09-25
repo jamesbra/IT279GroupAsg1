@@ -1,28 +1,16 @@
-#ifndef CALC_INPUT
-#define CALC_INPUT
+#include "CalculatorInput.h"
 
-#include "stack.cpp"
 #include <regex>
-#include <string>
-#include "calcNode.cpp"
-
-
-class CalculatorInput{
-
-public:
-	struct calcNode receiveInput();
-
-private:
-	struct calcNode temp;
-};
+#include <iostream>
 
 struct calcNode CalculatorInput::receiveInput(){
-    std::regex overallStructure("[[:blank:]]*[-+\\/*][[:blank:]]*[\\d]+[[:blank:]]*");
+    struct calcNode temp;
+    std::regex overallStructure("[[:blank:]]*[-+%\\/*][[:blank:]]*[\\d]+[[:blank:]]*");
     std::regex userCommandStructure("[[:blank:]]*[URCQurcq][[:blank:]]*");
     std::regex commandSet("[URCQurcq]");
-    std::regex operatorSet("[-+\\/*]");
+    std::regex operatorSet("[-+%\\/*]");
     std::regex operands("[\\d]+");
-    std::regex userCommandHelp("[?][URCQurcq-+\\/*]");
+    std::regex userCommandHelp("[?][URCQurcq|+\\/*\\-]");
     std::smatch m;
     std::string input;
     std::cout << ">";
@@ -59,5 +47,5 @@ struct calcNode CalculatorInput::receiveInput(){
     return temp;
 
 }
-#endif
+
 
