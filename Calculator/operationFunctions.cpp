@@ -53,7 +53,12 @@ void operationFunctions::undo(int& output,  calcNode& temp,ourStack<calcNode>& u
   if(undoStack.getSize()!=0)
   {
     output=undoStack.peek().operandOne;
+    std::cout<<"Size of redostack - pre undo pop" << redoStack.getSize() <<std::endl;
+    std::cout<<"Size of undostack - pre undo pop" << undoStack.getSize() <<std::endl;
     redoStack.push(undoStack.pop());
+    std::cout<<"Size of redostack - post undo pop" << redoStack.getSize() <<std::endl;
+    std::cout<<"Size of undostack - post undo pop" << undoStack.getSize() <<std::endl;
+
   }
   else
   {
@@ -66,7 +71,12 @@ void operationFunctions::redo(int& output,  calcNode& temp,ourStack<calcNode>& u
   if(redoStack.getSize() !=0)
   {
     output=redoStack.peek().result;
-    undoStack.push(redoStack.pop());
+    std::cout<<"Size of redostack - pre redo pop" << redoStack.getSize() <<std::endl;
+    std::cout<<"Size of undostack - pre redo pop" << undoStack.getSize() <<std::endl;
+    calcNode temp2 = redoStack.pop();
+    undoStack.push(temp2);
+    std::cout<<"Size of redostack - post redo pop" << redoStack.getSize() <<std::endl;
+    std::cout<<"Size of undostack - post redo pop" << undoStack.getSize() <<std::endl;
   }
   else
   {
