@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <ctime>
+#include "ourQueue.cpp"
 using namespace std;
 
 int main(){
