@@ -1,5 +1,5 @@
 sim: sim.o ourQueue.o LinkedList.o
-	g++ sim.o ourQueue.o LinkedList.o -o LineSimulation
+	g++ sim.o ourQueue.o LinkedList.o -o sim
 sim.o: sim.cpp
 	g++ -std=c++11 -c sim.cpp
 ourQueue.o: ourQueue.cpp
@@ -7,4 +7,4 @@ ourQueue.o: ourQueue.cpp
 LinkedList.o: LinkedList.cpp
 	g++ -c LinkedList.cpp
 clean:
-	rm *.o LineSimulation
+	rm *.o sim
