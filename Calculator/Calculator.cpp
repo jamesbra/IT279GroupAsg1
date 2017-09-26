@@ -47,46 +47,48 @@ cout<<"There is a help feature, if you don't know how to use an operation type i
      {
        case '+':
 	      //call function to deal with +
-	      operationFunctions::addition(currentValue,temp,redoStack,undoStack);
+	      operationFunctions::addition(currentValue,temp,undoStack,redoStack);
 	      break;
 	 
        case '-':
 	      //call function to deal with -
-	 operationFunctions::subtraction(currentValue,temp,redoStack,undoStack);
+	 operationFunctions::subtraction(currentValue,temp,undoStack,redoStack);
 	      break;
 	 
        case '*':
 	      //call function to deal with *
-	 operationFunctions::multiplication(currentValue,temp,redoStack,undoStack);
+	 operationFunctions::multiplication(currentValue,temp,undoStack,redoStack);
 	      break;
 	 
        case '/':
 	      //call function to deal with /
-	 operationFunctions::division(currentValue,temp,redoStack,undoStack);
+	 operationFunctions::division(currentValue,temp,undoStack,redoStack);
 	      break;
 	 
        case '%':
 	      //call function to deal with %
-	 operationFunctions::modulo(currentValue,temp,redoStack,undoStack);
+	 operationFunctions::modulo(currentValue,temp,undoStack,redoStack);
 	      break;
 	 
        case 'U':
 	      //call function to deal with U
-	 operationFunctions::undo(currentValue,temp,redoStack,undoStack);
+	 operationFunctions::undo(currentValue,temp,undoStack,redoStack);
 	      break;
 	 
        case 'R':
 	      //call function to deal with R
-	 operationFunctions::redo(currentValue,temp,redoStack,undoStack);
+	 operationFunctions::redo(currentValue,temp,undoStack,redoStack);
 	      break;
-	 
        case 'C':
 	      //call function to deal with C
+	 operationFunctions::clear(currentValue,temp,undoStack,redoStack);
 	    break;
        default:
 	  cout<<"Not a valid input"<<endl;
      }
      cout<<currentValue<<endl;
+     //cout<<"Top of Undo Stack: "<<undoStack.peek().operandOne<<endl;
+     //cout<<"Top of Redo Stack: "<<redoStack.peek().result<<endl;
      //after dealling with current temp calcNode, get a new one
      temp = CalculatorInput::receiveInput();
     }
