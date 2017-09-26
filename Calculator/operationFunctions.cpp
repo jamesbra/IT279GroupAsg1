@@ -79,11 +79,17 @@ void operationFunctions::division(int& output,  calcNode& temp,ourStack<calcNode
 {
   if(temp.help != true)
   {
-    temp.operandOne = output;
-    output=output/temp.operandTwo;
-    temp.result=output;
-    undoStack.push(temp);
-    redoStack.clear();
+    if (temp.operandTwo == 0){
+      std::cout << "Cannot divide by zero. Please try another value. " << std::endl;
+    }
+    else{
+      temp.operandOne = output;
+      output=output/temp.operandTwo;
+      temp.result=output;
+      undoStack.push(temp);
+      redoStack.clear();
+    }
+    
   }
   else
   {
