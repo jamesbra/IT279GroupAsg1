@@ -6,6 +6,8 @@ using namespace std;
 
 int main(){
 	
+	
+	
 	int x = 0;
 	//for when customer arrivers
 	int customer = 1;
@@ -21,11 +23,10 @@ int main(){
 	int pa = 0;
 	//being currently serviced- value is the time the customer will be done and can leave
 	int bcs = 0;
-	//Stil needs ques made*****************
 	//que for customers who have arrived but arent being serviced
-	//que line
+	ourQueue<int> line = new ourQueue();
 	//que for the time a customer arrives, once the customer starts being serviced current time and this will be used to determine wait time
-	//que time
+	ourQueue<int> time = new ourQueue();
 	
 	//user input for the range of random numbers
 	cout<<"Please enter a value for X ";
@@ -45,9 +46,9 @@ int main(){
 			}
 			else{
 				//someone else is already being serviced,wait in line,Then schdule next customer
-				line.add(rand()%x + 1);
+				line.enqueue(rand()%x + 1);
 				//add the current time so when customer finishes waiting in line you can compare the times and get wait time
-				time.add(i);
+				time.enqueue(i);
 				size++;
 				pa = (rand()%x + 1) + i;	
 			}
@@ -60,9 +61,9 @@ int main(){
 			customerL++;
 			//this if statment checks to make sure that there is a customer waiting in line
 			if(size > 0){
-				bcs = line.remove+i;
+				bcs = line.dequeue+i;
 				size--;
-				wait = i-time.remove;
+				wait = i-time.dequeue;
 			}
 		
 		}
