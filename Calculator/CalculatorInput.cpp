@@ -10,7 +10,7 @@ struct calcNode CalculatorInput::receiveInput(){
     std::regex commandSet("[URCQurcq]");
     std::regex operatorSet("[-+%\\/*]");
     std::regex operands("[\\d]+");
-    std::regex userCommandHelp("[?][URCQurcq|+\\/*\\-]");
+    std::regex userCommandHelp("[?][URCQurcq|+%\\/*\\-]");
     std::smatch m;
     std::string input;
     std::cout << ">";
@@ -23,12 +23,20 @@ struct calcNode CalculatorInput::receiveInput(){
         temp.help = false;
     }
     else if (std::regex_match(input,m,userCommandHelp)){
-        std::regex_search(input,m,operatorSet);
-        temp.help = true;
-        temp.operation = m[0].str().at(0);
-        temp.operandOne = 0;
-        temp.operandTwo = 0;
-
+        if (std::regex_match(input,m,commandSet)){
+            std::regex_search(input,m,commandSet);
+            temp.help = true;
+            temp.operation = m[0].str().at(0);
+            temp.operandOne = 0;
+            temp.operandTwo = 0;
+        }
+        else{
+            std::regex_search(input,m,operatorSet);
+            temp.help = true;
+            temp.operation = m[0].str().at(0);
+            temp.operandOne = 0;
+            temp.operandTwo = 0;
+        }
     }
     else if (std::regex_match(input,m,commandSet)){
         temp.help = false;
