@@ -44,7 +44,9 @@ int main(){
 				bcs = (rand()%x+1) + i;
 				cout<<"Bcs "<<bcs<<endl;
 				pa = (rand()%x+1) + i;
-				cout<<"PA "<<pa<<endl;
+				cout<<"ddddPA "<<pa<<endl;
+				size++;
+				cout<<size<<endl;
 			}
 			else{
 				//someone else is already being serviced,wait in line,Then schdule next customer
@@ -61,6 +63,7 @@ int main(){
 		if(bcs == i){
 			cout<<"Customer "<<customerL<<" left at "<<i<<endl;
 			customerL++;
+			cout<<size<<endl;
 			//this if statment checks to make sure that there is a customer waiting in line
 			if(size > 0){
 				bcs = line.dequeue()+i;
@@ -69,7 +72,6 @@ int main(){
 				wait = i-time.dequeue();
 				cout<<"PA "<<pa<<endl;
 			}
-		
 		}
 		//checks the size of the line once a minute
 		if(size > maxSize){
@@ -81,7 +83,7 @@ int main(){
 		}
 		//reseting these values
 		wait = 0;
-		size = 0;
+		//size = 0;
 	}
 	cout<<"The longest the line was at any minute during the simulation was "<<maxSize<<" Customers."<<endl;
 	cout<<"The longest an indivudal customer waited in line was "<<maxWait<<" minutes"<<endl; 
