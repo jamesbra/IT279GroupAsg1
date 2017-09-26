@@ -1,4 +1,8 @@
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
 #include <iostream>
+#include <exception>
 
 template<class T>
 class list
@@ -82,14 +86,30 @@ void list<T>::insert(T newData,int location)
   //if there is nothing in the list and does not specifiy location
   if(location==-1 && size==0)
   {
+    head=new node;
+    tail=head;
     head->data=newData;
     size++;
   }
   //add to end of node if locations is given to add to end of node or if location is not given
   else if((location==-1 && size!=0)||location==size)
   {
-    tail->next= new node;
-    tail->next->data=newData;
+    /*
+    node* temp=head;
+    node* newNode = new node;
+    newNode->data = newData;
+    //loop give us location a temp pointer to node location
+    for(int i=0;i<size-1;i++)
+    {
+      temp=temp->next;
+    }
+    newNode->next=temp->next;
+    temp->next=newNode;
+    size++;
+    */
+    node* newNode = new node;
+    newNode->data = newData;
+    tail->next = newNode;
     tail=tail->next;
     size++;
   }
@@ -169,7 +189,7 @@ void list<T>::remove(int location)
   {
     head=temp;
   }
-  if(location==0)
+  else if(location==0)
   {
     temp=head;
     head=head->next;
@@ -178,11 +198,11 @@ void list<T>::remove(int location)
   else if(location==size-1)
   {
     temp=head;
-    for(int i=0;i<size-1;i++)
+    for(int i=0;i<size-2;i++)
     {
       temp=temp->next;
     }
-    delete tail;
+    delete temp->next;
     tail = temp;
   }
   
@@ -197,6 +217,8 @@ void list<T>::remove(int location)
     temp->next=temp->next->next;
     delete temp2;
   }
+  
+  
   size--;
 }
 
@@ -288,3 +310,5 @@ list<T>& list<T>::operator=(const list& rtSide)
       return *this;
   }
 }
+
+#endif
