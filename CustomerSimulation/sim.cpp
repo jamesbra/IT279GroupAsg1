@@ -36,13 +36,15 @@ int main(){
 	//this for loop simulates a 12 hour shift where each i increment is 1 minute
 	for(int i=1; i<100; i++){
 		//if customer arrives
-		if(pa=i){
+		if(pa==i){
 			cout<<"Customer "<<customer<<" arrived at "<<i<<endl;
 			customer++;
 			//check if line que and being currently served is empty
 			if(size == 0 && bcs == 0){
 				bcs = (rand()%x+1) + i;
+				cout<<"Bcs "<<bcs<<endl;
 				pa = (rand()%x+1) + i;
+				cout<<"PA "<<pa<<endl;
 			}
 			else{
 				//someone else is already being serviced,wait in line,Then schdule next customer
@@ -56,14 +58,16 @@ int main(){
 		
 		}
 		//if current customer is done being serviced
-		if(bcs = i){
+		if(bcs == i){
 			cout<<"Customer "<<customerL<<" left at "<<i<<endl;
 			customerL++;
 			//this if statment checks to make sure that there is a customer waiting in line
 			if(size > 0){
 				bcs = line.dequeue()+i;
+				cout<<"Bcs "<<bcs<<endl;
 				size--;
 				wait = i-time.dequeue();
+				cout<<"PA "<<pa<<endl;
 			}
 		
 		}
