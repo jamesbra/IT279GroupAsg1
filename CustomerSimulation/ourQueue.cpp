@@ -10,6 +10,8 @@ class ourQueue
     //default cosntuctor to construct stack
     ourQueue();
     
+    ourQueue(T data);
+    
     //copy constructor
     ourQueue(const ourQueue& stackObject);
     
@@ -32,6 +34,7 @@ class ourQueue
   private:
     list<T> stackList;
 };
+
 
 template<class T>
 ourQueue<T>::ourQueue()

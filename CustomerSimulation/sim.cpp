@@ -24,9 +24,9 @@ int main(){
 	//being currently serviced- value is the time the customer will be done and can leave
 	int bcs = 0;
 	//que for customers who have arrived but arent being serviced
-	ourQueue<int> line = new ourQueue();
+	ourQueue<int> line;
 	//que for the time a customer arrives, once the customer starts being serviced current time and this will be used to determine wait time
-	ourQueue<int> time = new ourQueue();
+	ourQueue<int> time;
 	
 	//user input for the range of random numbers
 	cout<<"Please enter a value for X ";
@@ -34,13 +34,13 @@ int main(){
 	//setting up first customer to arrive
 	pa = rand()%x+1;
 	//this for loop simulates a 12 hour shift where each i increment is 1 minute
-	for(int i=1; i<720; i++){
+	for(int i=1; i<100; i++){
 		//if customer arrives
 		if(pa=i){
 			cout<<"Customer "<<customer<<" arrived at "<<i<<endl;
 			customer++;
 			//check if line que and being currently served is empty
-			if(size = 0 && bcs = 0){
+			if(size == 0 && bcs == 0){
 				bcs = (rand()%x+1) + i;
 				pa = (rand()%x+1) + i;
 			}
@@ -61,9 +61,9 @@ int main(){
 			customerL++;
 			//this if statment checks to make sure that there is a customer waiting in line
 			if(size > 0){
-				bcs = line.dequeue+i;
+				bcs = line.dequeue()+i;
 				size--;
-				wait = i-time.dequeue;
+				wait = i-time.dequeue();
 			}
 		
 		}
