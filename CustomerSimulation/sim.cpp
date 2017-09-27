@@ -10,7 +10,7 @@ using namespace std;
 int main(){
 	
 	
-	regex userInput("[1-9]+");
+	regex userInput("[\\d]+");
 	smatch m;
 	int x = 0;
 	string input = "0";
