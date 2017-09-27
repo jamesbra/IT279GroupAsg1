@@ -34,7 +34,7 @@ int main(){
 	//setting up first customer to arrive
 	pa = rand()%x+1;
 	//this for loop simulates a 12 hour shift where each i increment is 1 minute
-	for(int i=1; i<100; i++){
+	for(int i=1; i<20000; i++){
 		//if customer arrives
 		if(pa==i){
 			cout<<"Customer "<<customer<<" arrived at "<<i<<endl;
@@ -45,7 +45,7 @@ int main(){
 				cout<<"Bcs "<<bcs<<endl;
 				pa = (rand()%x+1) + i;
 				cout<<"ddddPA "<<pa<<endl;
-				size++;
+// 				size++;
 				cout<<size<<endl;
 			}
 			else{
@@ -66,6 +66,9 @@ int main(){
 			cout<<size<<endl;
 			//this if statment checks to make sure that there is a customer waiting in line
 			if(size > 0){
+				cout<<"size: "<<size<<endl;
+				cout<<"line: "<<line.size()<<endl;
+				cout<<"time: "<<time.size()<<endl;
 				bcs = line.dequeue()+i;
 				cout<<"Bcs "<<bcs<<endl;
 				size--;
