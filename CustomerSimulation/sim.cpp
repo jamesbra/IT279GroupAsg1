@@ -3,13 +3,14 @@
 #include <ctime>
 #include <regex>
 #include <cstring>
+#include <iomanip>
 #include "ourQueue.cpp"
 using namespace std;
 
 int main(){
 	
 	
-	regex userInput("[\\d]+");
+	regex userInput("[1-9]+");
 	smatch m;
 	int x = 0;
 	string input = "";
@@ -33,7 +34,7 @@ int main(){
 	ourQueue<int> time;
 	
 	//user input for the range of random numbers
-	while (!regex_match(input,m,userInput)){
+	while (!regex_match(input,m,userInput) || input=="0"){
 		cout<<"Please enter a value for X ";
 		getline(cin,input);
 	}
@@ -44,7 +45,7 @@ int main(){
 	for(int i=1; i<720; i++){
 		//if customer arrives
 		if(pa==i){
-			cout<<"Customer "<<customer<<" arrived at "<<i<<endl;
+			cout<<"Customer "<<setw(3)<<customer<<setw(17)<<" arrival time: "<<setw(3)<<i<<" minutes"<<endl;
 			customer++;
 			//check if line que and being currently served is empty
 			if(size == 0 && bcs == -1){
@@ -64,7 +65,7 @@ int main(){
 		}
 		//if current customer is done being serviced
 		if(bcs == i){
-			cout<<"Customer "<<customerL<<" left at "<<i<<endl;
+			cout<<"Customer "<<setw(3)<<customerL<<setw(12)<<" departure time: "<<setw(3)<<i<<" minutes"<<endl;
 			customerL++;
 			//this if statment checks to make sure that there is a customer waiting in line
 			if(size > 0){
@@ -90,6 +91,6 @@ int main(){
 		wait = 0;
 	}
 	cout<<"At its longest, the line was "<<maxSize<<" Customers long."<<endl;
-	cout<<"The longest an individual customer waited in line was "<<maxWait<<" minutes"<<endl; 
+	cout<<"The longest an individual customer waited in line was "<<maxWait<<" minutes."<<endl; 
 	return 0;
 }
