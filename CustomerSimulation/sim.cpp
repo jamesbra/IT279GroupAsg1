@@ -22,7 +22,7 @@ int main(){
 	//prearrival- customer waiting to arrive
 	int pa = 0;
 	//being currently serviced- value is the time the customer will be done and can leave
-	int bcs = 0;
+	int bcs = -1;
 	//que for customers who have arrived but arent being serviced
 	ourQueue<int> line;
 	//que for the time a customer arrives, once the customer starts being serviced current time and this will be used to determine wait time
@@ -40,7 +40,7 @@ int main(){
 			cout<<"Customer "<<customer<<" arrived at "<<i<<endl;
 			customer++;
 			//check if line que and being currently served is empty
-			if(size == 0 && bcs == 0){
+			if(size == 0 && bcs == -1){
 				bcs = (rand()%x+1) + i;
 				cout<<"Bcs "<<bcs<<endl;
 				pa = (rand()%x+1) + i;
@@ -72,7 +72,12 @@ int main(){
 				wait = i-time.dequeue();
 				cout<<"PA "<<pa<<endl;
 			}
+			else{
+				bcs=-1;
+			}
+
 		}
+		
 		//checks the size of the line once a minute
 		if(size > maxSize){
 			maxSize = size;
