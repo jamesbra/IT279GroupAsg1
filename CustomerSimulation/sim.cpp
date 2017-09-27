@@ -1,14 +1,18 @@
 #include <iostream>
 #include <stdlib.h>
 #include <ctime>
+#include <regex>
+#include <cstring>
 #include "ourQueue.cpp"
 using namespace std;
 
 int main(){
 	
 	
-	
+	regex userInput("[\\d]+");
+	smatch m;
 	int x = 0;
+	string input = "";
 	//for when customer arrivers
 	int customer = 1;
 	//for when customer leaves
@@ -29,12 +33,15 @@ int main(){
 	ourQueue<int> time;
 	
 	//user input for the range of random numbers
-	cout<<"Please enter a value for X ";
-	cin>>x;
+	while (!regex_match(input,m,userInput)){
+		cout<<"Please enter a value for X ";
+		getline(cin,input);
+	}
+	x = stoi(input.c_str());
 	//setting up first customer to arrive
 	pa = rand()%x+1;
 	//this for loop simulates a 12 hour shift where each i increment is 1 minute
-	for(int i=1; i<20000; i++){
+	for(int i=1; i<720; i++){
 		//if customer arrives
 		if(pa==i){
 			cout<<"Customer "<<customer<<" arrived at "<<i<<endl;
@@ -42,11 +49,7 @@ int main(){
 			//check if line que and being currently served is empty
 			if(size == 0 && bcs == -1){
 				bcs = (rand()%x+1) + i;
-				cout<<"Bcs "<<bcs<<endl;
 				pa = (rand()%x+1) + i;
-				cout<<"ddddPA "<<pa<<endl;
-// 				size++;
-				cout<<size<<endl;
 			}
 			else{
 				//someone else is already being serviced,wait in line,Then schdule next customer
@@ -63,17 +66,11 @@ int main(){
 		if(bcs == i){
 			cout<<"Customer "<<customerL<<" left at "<<i<<endl;
 			customerL++;
-			cout<<size<<endl;
 			//this if statment checks to make sure that there is a customer waiting in line
 			if(size > 0){
-				cout<<"size: "<<size<<endl;
-				cout<<"line: "<<line.size()<<endl;
-				cout<<"time: "<<time.size()<<endl;
 				bcs = line.dequeue()+i;
-				cout<<"Bcs "<<bcs<<endl;
 				size--;
 				wait = i-time.dequeue();
-				cout<<"PA "<<pa<<endl;
 			}
 			else{
 				bcs=-1;
@@ -91,9 +88,8 @@ int main(){
 		}
 		//reseting these values
 		wait = 0;
-		//size = 0;
 	}
-	cout<<"The longest the line was at any minute during the simulation was "<<maxSize<<" Customers."<<endl;
-	cout<<"The longest an indivudal customer waited in line was "<<maxWait<<" minutes"<<endl; 
+	cout<<"At its longest, the line was "<<maxSize<<" Customers long."<<endl;
+	cout<<"The longest an individual customer waited in line was "<<maxWait<<" minutes"<<endl; 
 	return 0;
 }
