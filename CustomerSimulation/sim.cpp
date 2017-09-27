@@ -12,7 +12,7 @@ int main(){
 	regex userInput("[\\d]+");
 	smatch m;
 	int x = 0;
-	string input = "";
+	string input = "0";
 	//for when customer arrivers
 	int customer = 1;
 	//for when customer leaves
@@ -31,11 +31,10 @@ int main(){
 	ourQueue<int> line;
 	//que for the time a customer arrives, once the customer starts being serviced current time and this will be used to determine wait time
 	ourQueue<int> time;
-	
 	//user input for the range of random numbers
-	while (!regex_match(input,m,userInput)){
+	while (!regex_match(input,m,userInput) || input == "0"){
 		cout<<"Please enter a value for X ";
-		getline(cin,input);
+		cin >> input;
 	}
 	x = stoi(input.c_str());
 	//setting up first customer to arrive
