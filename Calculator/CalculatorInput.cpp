@@ -7,8 +7,18 @@ struct calcNode CalculatorInput::receiveInput(){
     struct calcNode temp;
     std::regex overallOperationStructure("[[:blank:]]*[-+%\\/*][[:blank:]]*[-]?[[:blank:]]*[\\d]+[[:blank:]]*");
     std::regex commandSetStructure("[[:blank:]]*[URCQurcq][[:blank:]]*");
+
+
+
     std::regex operatorSet("[-+%\\/*]");
-    std::regex operands("[-]?[\\d]+");
+    std::regex posOperatorSet("[+%\\/*]");
+    std::regex operatorWithNegOperand("[+%\\/*][-][\\d]+");
+    std::regex negOperand("[-]?[\\d]+");
+    std::regex posOperand("[\\d]+");
+    std::regex minusNeg("-{2}[\\d]");
+
+
+
     std::regex overallHelpStructure("[?][URCQurc|+%\\/*\\-]");
     std::regex commandSetHelp("[?][URCQurc]");
     std::regex commandSet("[URCQurcq]");
@@ -18,11 +28,33 @@ struct calcNode CalculatorInput::receiveInput(){
     getline(std::cin, input);
 
     if (std::regex_match(input,overallOperationStructure)){
-        std::regex_search(input,m,operatorSet);
-        temp.operation = m[0].str().at(0);
-        std::regex_search(input,m,operands);
-        temp.operandTwo = std::stoi(m[0].str());
-        temp.help = false;
+
+        // "--7"
+        if (std::regex_match(input,minusNeg)){
+            std::regex_search(input,m,operatorSet);
+            temp.operation = m[0].str().at(0);
+            std::regex_search(input,m,negOperand);
+            temp.operandTwo = std::stoi(m[0].str());
+            temp.help = false;
+        }
+        // "+-7"
+        else if (std::regex_match(input,m,operatorWithNegOperand)){
+            std::regex_search(input,m,posOperatorSet);
+            temp.operation = m[0].str().at(0);
+            std::regex_search(input,m,negOperand);
+            temp.operandTwo = std::stoi(m[0].str());
+            temp.help = false;
+        }
+        // "-7"
+        // "+7"
+        else{
+            std::regex_search(input,m,operatorSet);
+            temp.operation = m[0].str().at(0);
+            std::regex_search(input,m,posOperand);
+            temp.operandTwo = std::stoi(m[0].str());
+            temp.help = false;
+        }
+        
     }
     else if (std::regex_match(input,m,overallHelpStructure)){
         if (std::regex_match(input,m,commandSetHelp)){

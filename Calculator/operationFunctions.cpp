@@ -93,7 +93,7 @@ void operationFunctions::division(int& output,  calcNode& temp,ourStack<calcNode
   }
   else
   {
-    std::cout<<"\nThe \"\\\" operation divides two numbers.\n"
+    std::cout<<"\nThe \"/\" operation divides two numbers.\n"
 	     <<"It does this by dividing the number on the console\n"
 	     <<"by the number you (the user) input. e.g\n"
 	     <<"10\n"
@@ -173,7 +173,7 @@ void operationFunctions::redo(int& output,  calcNode& temp,ourStack<calcNode>& u
   }
   else
   {
-    std::cout<<"\nThe redo function undos the what was undone.\n"
+    std::cout<<"\nThe redo function undos what was undone.\n"
 	     <<"if you use any of the standard operands or clear\n"
 	     <<"it will reset the redo operations and there will\n"
 	     <<"be nothing to redo\n\n";
@@ -192,8 +192,8 @@ void operationFunctions::clear(int& output,  calcNode& temp,ourStack<calcNode>& 
   }
   else
   {
-    std::cout<<"\nThe Clear functions sets the current value of the\n"
-	     <<"consle to zero. This can be undone\n\n";
+    std::cout<<"\nThe Clear function sets the current value of the\n"
+	     <<"console to zero. This can be undone\n\n";
   }
   
 }
